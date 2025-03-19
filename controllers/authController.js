@@ -132,7 +132,7 @@ exports.logout = (req, res) => {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
   });
-  res.status(200).json({ status: "Success" });
+  res.status(200).json({ status: "success" });
 };
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
@@ -159,7 +159,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   )}/api/v1/users/resetPassword/${resetToken}`;
   try {
     await new Email(user, resetURL).sendPasswordReset();
-    res.status(200).json({ status: "Success", message: "Token sent to email" });
+    res.status(200).json({ status: "success", message: "Token sent to email" });
   } catch (error) {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;

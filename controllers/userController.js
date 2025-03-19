@@ -44,12 +44,12 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find().select("+active");
   res
     .status(200)
-    .json({ status: "Success", Length: users.length, data: users });
+    .json({ status: "success", Length: users.length, data: users });
 });
 exports.createUser = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
   if (!newUser) return next(new AppErr("Error creating User.", 404));
-  res.status(201).json({ status: "Success", data: newUser });
+  res.status(201).json({ status: "success", data: newUser });
 });
 exports.updateUser = catchAsync(async (req, res, next) => {
   const updatedUser = await User.findById(req.params.id).select(
@@ -83,7 +83,7 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 exports.getUser = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.params.id).select("+active");
   if (!user) return next(new AppErr("User not found", 400));
-  res.status(200).json({ status: "Success", data: user });
+  res.status(200).json({ status: "success", data: user });
 });
 exports.getMe = catchAsync(async (req, res, next) => {
   req.params.id = req.user._id;
@@ -119,5 +119,5 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 });
 exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user._id, { active: false });
-  res.status(202).json({ status: "Success", data: "Account deleted" });
+  res.status(202).json({ status: "success", data: "Account deleted" });
 });
