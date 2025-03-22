@@ -7,7 +7,11 @@ const RouteSchema = new Schema({
   endLocation: { type: String, required: true },
   duration: { type: String, required: true },
   fare: { type: Number, required: true },
-  bus: { type: mongoose.Schema.Types.ObjectId, ref: "Bus", required: true },
+  schedules: [
+    {
+      bus: { type: mongoose.Schema.Types.ObjectId, ref: "Bus", required: true },
+    },
+  ],
   createdAt: { type: Date, default: Date.now },
 });
 

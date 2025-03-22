@@ -45,6 +45,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     match: [/^\d{11}$/, "NIN must be exactly 11 digits"],
   },
+  isVerified: { type: Boolean, default: false },
   active: {
     type: Boolean,
     default: true,

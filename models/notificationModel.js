@@ -10,7 +10,7 @@ const NotificationSchema = new Schema({
     enum: ["booking", "payment", "reminder"],
     required: true,
   },
-  status: { type: String, enum: ["unread", "read"], default: "unread" },
+
   createdAt: { type: Date, default: Date.now },
 });
 
