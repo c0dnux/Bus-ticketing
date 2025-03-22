@@ -9,7 +9,12 @@ const RouteSchema = new Schema({
   fare: { type: Number, required: true },
   schedules: [
     {
-      bus: { type: mongoose.Schema.Types.ObjectId, ref: "Bus", required: true },
+      bus: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Bus",
+        required: true,
+        unique: true,
+      },
     },
   ],
   createdAt: { type: Date, default: Date.now },
