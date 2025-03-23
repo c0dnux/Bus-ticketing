@@ -4,6 +4,8 @@ const globalErrorController = require("./controllers/errorController");
 const userRoutes = require("./routes/userRoutes");
 const busRoutes = require("./routes/busRoutes");
 const routeRoutes = require("./routes/routeRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+
 const AppError = require("./utils/appError");
 //Body Parser (req.body)
 app.use(express.json());
@@ -11,6 +13,7 @@ app.use(express.json());
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/bus", busRoutes);
 app.use("/api/v1/route", routeRoutes);
+app.use("/api/v1/booking", bookingRoutes);
 
 app.all("*", (req, res, next) => {
   //whenever we pass somrthing in the next it assumes there is an error

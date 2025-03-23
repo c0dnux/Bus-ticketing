@@ -17,8 +17,12 @@ const RouteSchema = new Schema({
       },
     },
   ],
+  leavingTime: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
-
+RouteSchema.pre(/^find/, function (next) {
+  this.populate("schedules.bus");
+  next();
+});
 const Route = mongoose.model("Route", RouteSchema);
 module.exports = Route;

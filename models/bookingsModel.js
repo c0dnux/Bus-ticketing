@@ -13,6 +13,8 @@ const BookingSchema = new Schema({
     default: "pending",
   },
   paymentStatus: { type: String, enum: ["unpaid", "paid"], default: "unpaid" },
+  transactionId: { type: String, required: true, unique: true },
+
   createdAt: { type: Date, default: Date.now },
 });
 
