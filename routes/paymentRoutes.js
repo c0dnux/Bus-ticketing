@@ -10,6 +10,7 @@ router.post(
 router.post(
   "/getAllreceipts",
   authController.protect,
+  authController.restrictTo("admin"),
   paymentController.getAllReceipts
 );
 module.exports = router;
